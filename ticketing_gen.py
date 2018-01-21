@@ -22,6 +22,7 @@ body_content_x = 225
 
 font_title_day = ImageFont.truetype('res/NanumBarunpenR.ttf', 180)
 font_title_date = ImageFont.truetype('res/NanumBarunpenR.ttf', 100)
+font_title_date_page = ImageFont.truetype('res/NanumBarunpenR.ttf', 70)
 fill_title_day = (255,255,255,255)
 fill_title_date = (0,0,0,255)
 font_body = ImageFont.truetype('res/NanumBarunGothicLight.ttf', 55)
@@ -113,13 +114,21 @@ for day_content in day_by_day:
 	str_date = '{d.month}/{d.day}'.format(d=date)
 
 	# make page and save.
-	for day_page in day_pages:
+	for page_num, day_page in enumerate(day_pages):
 		pil_day = pil_bg.copy()
 		draw = ImageDraw.Draw(pil_day)
 
 		# draw header
 		write_center(draw, title_day_y, str_day, font=font_title_day, fill=fill_title_day)
-		write_center(draw, title_date_y, str_date, font=font_title_date, fill=fill_title_date)
+		if len(day_pages) > 1:	# if more than 1 page
+			str_page = "-(%d)" % (page_num+1)
+			date_width = font_title_date.getsize(str_date)[0]
+			date_page_width = date_width + font_title_date_page.getsize(str_page)[0]
+			title_date_x = (width - date_page_width)/2
+			draw.text((title_date_x, title_date_y), str_date, font=font_title_date, fill=fill_title_date)
+			draw.text((title_date_x + date_width, title_date_y+27), str_page, font=font_title_date_page, fill=fill_title_date)
+		else:
+			write_center(draw, title_date_y, str_date, font=font_title_date, fill=fill_title_date)
 
 		# calculate position coordinate
 		multiline_text_height = line_height * len(day_page) - text_space

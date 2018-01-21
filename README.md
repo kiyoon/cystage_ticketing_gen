@@ -47,7 +47,7 @@ Desired output: Schedule: 1/13(Sat)~1/16(Tue)
 Writes in a body with bold and blue font, with surrounding angle brackets. Aimed for writing names of plays.
 
 Example entry: Cats  
-Desired output: <span style="color:blue">**&lt;Cats&gt;**</span>
+Desired output: <span style="color:blue">**&lt;Cats&gt;**</span> (with blue text)
 
 ### D column
 
@@ -61,7 +61,7 @@ Desired output: final
 Writes in a body with pink-backgrounded white font. Aimed for writing discount informations.
 
 Example entry: Undergraduate discount  
-Desired output: <span style="background-color:rgba(234, 104, 162, 1); color:white">&nbsp;Undergraduate discount </span>
+Desired output: <span style="background-color:rgba(234, 104, 162, 1); color:white">&nbsp;Undergraduate discount </span> (with white text, pink background)
 
 ## Executing program
 
