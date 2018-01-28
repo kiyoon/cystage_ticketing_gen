@@ -156,7 +156,7 @@ for day_content in day_by_day:
 				draw.text((cursor_x+10, cursor_y+4), line[4], font=font_body_discount, fill=fill_body_discount)
 
 		# save a page
-		pil_day.save('%d.png' % page)
+		pil_day.convert('RGB').save('%d.jpg' % page, quality=100)
 		pil_day.close()
 		page += 1
 
@@ -184,7 +184,7 @@ else:
 str_week_of_month = korean_counter[cover_week - 1]
 write_center(draw, cover_week_y, "%d월 %s째 주" % (cover_month, str_week_of_month), font=font_cover, fill=fill_cover)
 
-pil_cover.save('0.png')
+pil_cover.convert('RGB').save('0.jpg', quality=100)
 pil_cover.close()
 
 print("Processing done!")
