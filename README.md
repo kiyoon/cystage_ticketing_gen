@@ -7,7 +7,8 @@ Author: Kiyoon Kim (yoonkr33@gmail.com)
 # Dependencies
 
 - Python 3
-- Pillow (`pip install Pillow`)
+- python-Pillow (`pip install Pillow`)
+- python-InstagramAPI (`pip install InstagramAPI`)
 - python-dropbox (`pip install dropbox`)
 
 This program is tested under Windows 10.
