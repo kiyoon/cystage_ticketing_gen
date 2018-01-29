@@ -1,3 +1,11 @@
+# Vim temp files
+*.swp
+*.swo
+*~
+
+# Token file
+access_token.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

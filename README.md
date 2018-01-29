@@ -18,10 +18,12 @@ You need 3 items in order to execute.
 - ticketing_gen.py
 - input.csv (ANSI encoding)
 - res (directory)
+- config.ini (UTF-8 with BOM encoding)
+- access_token.ini (ANSI encoding)
 
 Other folders or files are not necessarily needed. `reference` contains reference pictures made with Photoshop, `sample` contains sample output of this program. 
 
-You only have to change `input.csv` as desired.
+You only have to change `input.csv` as desired, in order to generate informative pictures. You have to change `access_token.ini` in order to authenticate Instagram, Facebook Page, and Naver Blog. You can change `config.ini` if you want to change upload captions or descriptions.
 
 ## Format of input.csv
 
@@ -63,10 +65,20 @@ Writes in a body with pink-backgrounded white font. Aimed for writing discount i
 Example entry: Undergraduate discount  
 Desired output: <span style="background-color:rgba(234, 104, 162, 1); color:white">&nbsp;Undergraduate discount </span> (with white text, pink background)
 
+## access_token.ini
+
+Take a look at `access_token_example.ini`. It includes tokens and login ids. Beware not to publish this file!
+
+## config.ini
+
+This configures default text for uploading SNS and blog.
+
 ## Executing program
 
-When formatting `input.csv` is done, execute in a command line prompt as follows:
+When formatting `input.csv`, `access_token.ini`, and `config.ini` is done, execute in a command line prompt as follows:
 
 `python ticketing_gen.py`
 
-Output files will be generated in the same folder.
+Output files will be generated in the same folder.  
+
+Then, it will start uploading them to Instagram, Facebook page, Dropbox. It will post a post to Naver blog, with the images on Dropbox.
