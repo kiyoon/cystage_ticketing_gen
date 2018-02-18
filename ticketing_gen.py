@@ -93,6 +93,11 @@ first_date = csv_content[0][0]
 del csv_content[0]
 print("Starting date: " + str(first_date))
 
+# if last csv_content element is empty
+while all(not e.strip() for e in csv_content[-1]):
+    # remove the last null element
+    del csv_content[-1]
+
 # separate the list by days.
 start_idx = 0
 day_by_day = []
@@ -230,10 +235,13 @@ print('\t'.join(("\t" + sns_caption).splitlines(True)))
 print()
 
 sns_hashtags = input("Enter additional hashtags: ")
-sns_caption += sns_hashtags
+fb_caption = sns_caption + sns_hashtags
+
+insta_hashtags = input("Enter additional hashtags for Instagram: ")
+insta_caption = fb_caption + "\n.\n.\n.\n" + insta_hashtags
 
 print()
-print('\t'.join(("\t" + sns_caption).splitlines(True)))
+print('\t'.join(("\t" + insta_caption).splitlines(True)))
 print()
 
 token_config = ConfigParser()
@@ -257,7 +265,7 @@ print("User ID: " + insta_userid)
 insta_password = getpass.getpass()
 ig = InstagramAPI(insta_userid, insta_password)
 ig.login()
-ig.uploadAlbum(media, caption=sns_caption)
+ig.uploadAlbum(media, caption=insta_caption)
 
 print('Successfully uploaded to Instagram!')
 print()
@@ -276,7 +284,7 @@ data = {
 }
 
 data_upload = {
-    'message': sns_caption,
+    'message': fb_caption,
     'access_token': fb_token,
 }
 
