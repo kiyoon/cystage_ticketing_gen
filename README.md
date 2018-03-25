@@ -8,14 +8,13 @@ Author: Kiyoon Kim (yoonkr33@gmail.com)
 
 - Python 3
 - python-Pillow (`pip install Pillow`)
-- python-InstagramAPI (`pip install InstagramAPI`)
 - python-dropbox (`pip install dropbox`)
 
 This program is tested under Windows 10.
 
 # Usage
 
-You need 3 items in order to execute.
+You need 5 items in order to execute.
 
 - ticketing_gen.py
 - input.csv (ANSI encoding)

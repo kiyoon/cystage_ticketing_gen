@@ -237,12 +237,12 @@ print()
 sns_hashtags = input("Enter additional hashtags: ")
 fb_caption = sns_caption + sns_hashtags
 
-insta_hashtags = input("Enter additional hashtags for Instagram: ")
-insta_caption = fb_caption + "\n.\n.\n.\n" + insta_hashtags
-
-print()
-print('\t'.join(("\t" + insta_caption).splitlines(True)))
-print()
+#insta_hashtags = input("Enter additional hashtags for Instagram: ")
+#insta_caption = fb_caption + "\n.\n.\n.\n" + insta_hashtags
+#
+#print()
+#print('\t'.join(("\t" + insta_caption).splitlines(True)))
+#print()
 
 token_config = ConfigParser()
 token_config.read('access_token.ini')    # ANSI
@@ -250,25 +250,25 @@ token_config.read('access_token.ini')    # ANSI
 
 ###
 # Instagram
-print('Uploading to Instagram..')
-from InstagramAPI import InstagramAPI
-media = []  # Albums can contain between 2 and 10 photos/videos.
-
-for p in range(page):
-    # find jpg files and add to album
-    file_to_add = '%d.jpg' % p
-    media.append({'type':'photo', 'file': file_to_add})
-
-insta_userid = token_config.get('id', 'instagram')
-print()
-print("User ID: " + insta_userid)
-insta_password = getpass.getpass()
-ig = InstagramAPI(insta_userid, insta_password)
-ig.login()
-ig.uploadAlbum(media, caption=insta_caption)
-
-print('Successfully uploaded to Instagram!')
-print()
+#print('Uploading to Instagram..')
+#from InstagramAPI import InstagramAPI
+#media = []  # Albums can contain between 2 and 10 photos/videos.
+#
+#for p in range(page):
+#    # find jpg files and add to album
+#    file_to_add = '%d.jpg' % p
+#    media.append({'type':'photo', 'file': file_to_add})
+#
+#insta_userid = token_config.get('id', 'instagram')
+#print()
+#print("User ID: " + insta_userid)
+#insta_password = getpass.getpass()
+#ig = InstagramAPI(insta_userid, insta_password)
+#ig.login()
+#ig.uploadAlbum(media, caption=insta_caption)
+#
+#print('Successfully uploaded to Instagram!')
+#print()
 
 ###
 # Facebook
