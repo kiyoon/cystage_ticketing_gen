@@ -165,23 +165,27 @@ for day_content in day_by_day:
         # draw body
         for i, line in enumerate(day_page):
             cursor_y = body_y + i*line_height
-            if line[0]:
-                draw.text((body_time_x, cursor_y), line[0], font=font_body_bold, fill=fill_body)
-            cursor_x = body_content_x
-            if line[1]:
-                draw.text((cursor_x, cursor_y), line[1], font=font_body, fill=fill_body)
-                cursor_x += font_body.getsize(line[1] + " ")[0]
-            if line[2]:
-                str_draw = "<" + line[2] + ">"
-                draw.text((cursor_x, cursor_y), str_draw, font=font_body_bold, fill=fill_body_name)
-                cursor_x += font_body_bold.getsize(str_draw + " ")[0]
-            if line[3]:
-                draw.text((cursor_x, cursor_y), line[3], font=font_body, fill=fill_body)
-                cursor_x += font_body.getsize(line[3] + " ")[0]
-            if line[4]:
-                text_width = font_body_discount.getsize(line[4])[0]
-                draw.rectangle([cursor_x, cursor_y, cursor_x + text_width + 18, cursor_y + textheight_body + 1], fill = fill_body_discount_rect)
-                draw.text((cursor_x+10, cursor_y+4), line[4], font=font_body_discount, fill=fill_body_discount)
+            try:
+                if line[0]:
+                    draw.text((body_time_x, cursor_y), line[0], font=font_body_bold, fill=fill_body)
+                cursor_x = body_content_x
+                if line[1]:
+                    draw.text((cursor_x, cursor_y), line[1], font=font_body, fill=fill_body)
+                    cursor_x += font_body.getsize(line[1] + " ")[0]
+                if line[2]:
+                    str_draw = "<" + line[2] + ">"
+                    draw.text((cursor_x, cursor_y), str_draw, font=font_body_bold, fill=fill_body_name)
+                    cursor_x += font_body_bold.getsize(str_draw + " ")[0]
+                if line[3]:
+                    draw.text((cursor_x, cursor_y), line[3], font=font_body, fill=fill_body)
+                    cursor_x += font_body.getsize(line[3] + " ")[0]
+                if line[4]:
+                    text_width = font_body_discount.getsize(line[4])[0]
+                    draw.rectangle([cursor_x, cursor_y, cursor_x + text_width + 18, cursor_y + textheight_body + 1], fill = fill_body_discount_rect)
+                    draw.text((cursor_x+10, cursor_y+4), line[4], font=font_body_discount, fill=fill_body_discount)
+            except IndexError:
+                # line might not have full indices
+                pass
 
         # save a page
         pil_day.convert('RGB').save('%d.jpg' % page, quality=100)
